@@ -1,6 +1,8 @@
 const weather = (() => {
   const API_KEY = '20ce4be2790486118f707683c2bb267a';
 
+  // function which takes a query and returns the geographical coordinates
+  // along with the name of the found location
   const getCoordinates = async (query) => {
     const response = await fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=${API_KEY}`
@@ -18,6 +20,39 @@ const weather = (() => {
       coordinates,
       location,
     };
+  };
+
+  // function which takes a query and returns weather data
+  // along with the name of the provided location
+  const getWeather = async (query) => {
+    const { coordinates, location } = await getCoordinates(query);
+
+    const response = await fetch(
+      `https://api.openweathermap.org/data/3.0/onecall?lat=${
+        coordinates.lat
+      }&lon=${
+        coordinates.lon
+      }&exclude=minutely,alerts&units=${'metric'}&appid=${API_KEY}`
+    );
+    const data = await response.json();
+
+    // object with selected weather data
+    const weatherData = {
+      current: {
+        temp: data.current.temp,
+        condition: data.current.weather[0].description,
+        icon: data.current.weather[0].icon,
+      },
+    };
+
+    return {
+      weatherData,
+      location,
+    };
+  };
+
+  return {
+    getWeather,
   };
 })();
 
