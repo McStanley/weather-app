@@ -5,5 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
-  <body></body>
+  <body>
+    <form id="form-query" class="translucent-bg">
+      <input
+        type="text"
+        name="input-query"
+        id="input-query"
+        placeholder="Enter location"
+      />
+      <button type="submit" id="btn-submit">🔎</button>
+    </form>
+    <main class="translucent-bg">
+      <p id="p-location">City, US</p>
+      <div id="weather-details">
+        <p id="p-condition">Sunny</p>
+        <p id="p-temp">28*</p>
+      </div>
+      <img
+        id="icon-weather"
+        src="http://openweathermap.org/img/wn/10d@2x.png"
+        alt=""
+      />
+    </main>
+    <div id="photo-attribution" class="translucent-bg">
+      Photo by
+      <a
+        href="https://unsplash.com/@sushioutlaw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        target="_blank"
+        >Brian McGowan</a
+      >
+      on
+      <a
+        href="https://unsplash.com/s/photos/weather-forecast?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        target="_blank"
+        >Unsplash</a
+      >
+    </div>
+    <div id="author" class="translucent-bg">
+      Created by
+      <a href="https://github.com/McStanley" target="_blank"
+        >Stanisław Olejniczak</a
+      >
+      2022
+    </div>
+  </body>
 </html>
