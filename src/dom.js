@@ -41,7 +41,7 @@ const dom = (() => {
       pLocation.textContent = location;
       pCondition.textContent = weatherData.current.condition;
       pTemp.textContent = `${weatherData.current.temp}° C`;
-      iconWeather.src = `http://openweathermap.org/img/wn/${weatherData.current.icon}@4x.png`;
+      iconWeather.src = `https://openweathermap.org/img/wn/${weatherData.current.icon}@4x.png`;
     } catch (error) {
       displayError();
     }

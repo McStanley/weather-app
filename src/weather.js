@@ -5,7 +5,7 @@ const weather = (() => {
   // along with the name of the found location
   const getCoordinates = async (query) => {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=${API_KEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${query}&appid=${API_KEY}`
     );
     const json = await response.json();
     const data = json[0];
