@@ -49,6 +49,7 @@ input:focus {
 main {
   margin: auto 0;
   width: 600px;
+  height: 300px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr;
@@ -67,6 +68,10 @@ main {
 #weather-details {
   grid-area: weather;
   font-size: 1.5rem;
+}
+
+#p-condition::first-letter {
+  text-transform: uppercase;
 }
 
 #icon-weather {
