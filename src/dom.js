@@ -40,7 +40,9 @@ const dom = (() => {
 
       pLocation.textContent = location;
       pCondition.textContent = weatherData.current.condition;
-      pTemp.textContent = `${weatherData.current.temp}° C`;
+      pTemp.textContent = `${weatherData.current.temp}${
+        weather.getUnits() === 'metric' ? '° C' : '° F'
+      }`;
       iconWeather.src = `https://openweathermap.org/img/wn/${weatherData.current.icon}@4x.png`;
     } catch (error) {
       displayError();
@@ -61,10 +63,31 @@ const dom = (() => {
     inputQuery.value = '';
   };
 
+  const toggleUnits = () => {
+    const spanCelsius = document.querySelector('#celsius');
+    const spanFahrenheit = document.querySelector('#fahrenheit');
+
+    spanCelsius.classList.toggle('bold');
+    spanFahrenheit.classList.toggle('bold');
+
+    weather.toggleUnits();
+    displayWeather();
+  };
+
   const init = () => {
     const formQuery = document.querySelector('#form-query');
+    const btnUnits = document.querySelector('#btn-units');
+    const spanCelsius = document.querySelector('#celsius');
+    const spanFahrenheit = document.querySelector('#fahrenheit');
 
     formQuery.addEventListener('submit', submitForm);
+    btnUnits.addEventListener('click', toggleUnits);
+
+    if (weather.getUnits() === 'metric') {
+      spanCelsius.classList.add('bold');
+    } else {
+      spanFahrenheit.classList.add('bold');
+    }
 
     displayWeather('Warsaw, Poland');
   };
