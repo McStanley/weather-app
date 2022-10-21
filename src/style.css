@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Maven Pro';
+  src: url('./assets/MavenPro-VariableFont_wght.ttf');
+}
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -7,11 +12,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Maven Pro', sans-serif;
 }
 
 a {
   text-decoration: none;
   color: #d34822;
+}
+
+button,
+input {
+  font-size: inherit;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
 }
 
 button {
@@ -26,11 +40,16 @@ input:focus {
   color: rgba(0, 0, 0, 0.7);
 }
 
+p {
+  margin: 0;
+}
+
 #form-query {
   margin-top: 25px;
   margin-right: 50px;
   width: fit-content;
   align-self: end;
+  font-size: 1.5rem;
 }
 
 .translucent-bg {
@@ -39,27 +58,20 @@ input:focus {
   padding: 5px;
 }
 
-#input-query,
-#btn-submit,
-#btn-units {
-  background-color: transparent;
-  border: none;
-  font-size: 24px;
-}
-
 #input-query {
-  width: 230px;
+  width: 250px;
 }
 
 main {
   position: relative;
   margin: auto 0;
-  width: 600px;
-  height: 300px;
+  width: 700px;
+  height: 350px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   grid-template-areas:
+    'units units'
     'location location'
     'weather icon';
   place-items: center;
@@ -67,13 +79,18 @@ main {
 
 #p-location {
   grid-area: location;
-  font-size: 2rem;
+  align-self: end;
+  margin: 20px 0;
+  font-size: 2.2rem;
   font-weight: bold;
 }
 
 #weather-details {
   grid-area: weather;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #p-condition::first-letter {
@@ -99,12 +116,15 @@ main {
 #photo-attribution,
 #author {
   font-size: 1.2rem;
+  padding: 8px 16px;
 }
 
 #btn-units {
-  position: absolute;
-  top: 15px;
-  right: 20px;
+  grid-area: units;
+  justify-self: end;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 1.7rem;
 }
 
 .bold {
